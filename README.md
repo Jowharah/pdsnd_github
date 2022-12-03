@@ -4,14 +4,15 @@
 Include the date you created this project and README file.
 
 ### Project Title
-Replace the Project Title
+Github Project: Git Commands 
 
 ### Description
-Describe what your project is about and what it does
+This project is one of multiple project related to Udacity program "programming for data science".
+by completing all the project, I'll be able to take the certificate 
 
 ### Files used
 Include the files used
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+https://github.com/udacity/pdsnd_github
 
