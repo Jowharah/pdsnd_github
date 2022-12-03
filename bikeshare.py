@@ -3,6 +3,7 @@
 import time
 import pandas as pd
 import numpy as np
+from tabulate import tabulate
 
 #Global values to be used in all funtions 
 CITY_DATA = { 'chicago': 'chicago.csv',
@@ -283,7 +284,7 @@ def raw_data(df):
         if answer.lower() != 'yes':
             flag=False
         else :
-            print(df[i: i+5])
+            print(tabulate(df_default.iloc[np.arange(0+i,5+i)], headers ="keys"))
             i+=5    
 
 def main():
