@@ -11,7 +11,8 @@ Github Project: Git Commands
 
 ### Description
 This project is one of multiple project related to Udacity program "programming for data science".
-by completing all the project, I'll be able to take the certificate 
+by completing all the project, I'll be able to take the certificate. 
+during this program I aquire the knoweldege of SQL langugae, python and Git command. 
 
 ### Files used
 bikeshare.py
