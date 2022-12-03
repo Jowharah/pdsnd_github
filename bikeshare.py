@@ -1,6 +1,5 @@
 
 #importing necessacry library 
-
 import time
 import pandas as pd
 import numpy as np
@@ -14,8 +13,7 @@ months = ['january', 'february', 'march', 'april', 'may', 'june']
 
 days = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"]
 
-
-
+#functions 
 def get_city():
     """
     Asks user to specify a city to be used in get_filters
@@ -66,7 +64,33 @@ def get_month():
             print("your input is wrong")
     return month
 
-def get_filters():
+def check_data_entry(prompt, valid_entries): 
+    """
+    Asks user to type some input and verify if the entry typed is valid.
+    Since we have 3 inputs to ask the user in get_filters(), it is easier to write a function.
+    Args:
+        (str) prompt - message to display to the user
+        (list) valid_entries - list of string that should be accepted 
+    Returns:
+        (str) user_input - the user's valid input
+    """
+    try:
+        user_input = str(input(prompt)).lower()
+
+        while user_input not in valid_entries : 
+            print('Sorry... it seems like you\'re not typing a correct entry.')
+            print('Let\'s try again!')
+            user_input = str(input(prompt)).lower()
+
+        print('Great! the chosen entry is: {}\n'.format(user_input))
+        return user_input
+
+    except:
+        print('Seems like there is an issue with your input')
+
+
+
+def get_filters(): 
     """
     Asks user to specify a city, month, and day to analyze.
 
@@ -75,35 +99,25 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
-    
-    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city = get_city()
-  
-    # TO DO: get user input for month (all, january, february, ... , june)
-    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    flag=True  
-    while (flag):
-        date_filiter = str(input("what filiters regarding the date you want (month), (day), (both) or (none) for no filitring? "))
-        if date_filiter.lower() == "month":
-            flag=False 
-            month = get_month()
-            day= "" 
-        elif date_filiter.lower() == "day":
-            flag=False 
-            day= get_day()
-            month = ""
-        elif date_filiter.lower() == "both":
-            flag=False   
-            month = get_month()
-            day= get_day()
-        elif date_filiter.lower() == "none":
-            flag=False   
-            month = ""
-            day= ""  
-        else:
-            print("your input is wrong\n")                  
-            
+
+    print('Hi there! Let\'s explore some US bikeshare data!')
+
+    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    valid_cities = CITY_DATA.keys()
+    prompt_cities = 'Please choose one of the 3 cities (chicago, new york city, washington): '
+    city = check_data_entry(prompt_cities, valid_cities)
+
+
+    # get user input for month (all, january, february, ... , june)
+    valid_months = ['all','january','february','march','april','may','june']
+    prompt_month = 'Please choose a month (all, january, february, ... , june): '
+    month = check_data_entry(prompt_month, valid_months)
+
+    # get user input for day of week (all, monday, tuesday, ... sunday)
+    valid_days = ['all','monday','tuesday','wednesday','thursday','friday','saturday', 'sunday']
+    prompt_day = 'Please choose a day (all, monday, tuesday, ... sunday): '
+    day = check_data_entry(prompt_day, valid_days)
+
 
     print('-'*40)
     return city, month, day
